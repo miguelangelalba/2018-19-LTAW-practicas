@@ -1,13 +1,13 @@
 {
-  "name": "hello",
-  "description": "Proyecto hola mundo",
+  "name": "server",
+  "description": "Mi priomer servidor hola mundo",
   "keywords": [
     "ltaw",
     "test"
   ],
   "version": "0.0.1",
   "author": "Miguel Ángel Alba Blanco",
-  "main": "hello.js",
+  "main": "server.js",
   "devDependencies": {},
   "license": "GPL-3.0",
   "repository": {
@@ -15,7 +15,7 @@
     "url": "https://github.com/miguelangelalba/2018-19-LTAW-practicas"
 },
 "scripts": {
-   "start": "node hello.js",
+   "start": "node server.js",
    "test": "node -v"
  }
 }
