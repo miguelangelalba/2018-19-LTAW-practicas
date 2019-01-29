@@ -1,0 +1,17 @@
+{
+  "name": "hello",
+  "description": "Proyecto hola mundo",
+  "keywords": [
+    "ltaw",
+    "test"
+  ],
+  "version": "0.0.1",
+  "author": "Miguel Ángel Alba Blanco",
+  "main": "hello.js",
+  "devDependencies": {},
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelangelalba/2018-19-LTAW-practicas"
+  }
+}
