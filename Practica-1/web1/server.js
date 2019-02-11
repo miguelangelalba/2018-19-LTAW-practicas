@@ -2,10 +2,11 @@ var http = require('http');
 var dt = require('./myfirstmodule');
 var url = require('url');
 var fs = require('fs');
-const mime = {
+const mime = { // Estandar para indicar el tipo de contenido
    'html' : 'text/html',
    'css'  : 'text/css',
    'jpg'  : 'image/jpg',
+   'png'  : 'image/png',
    'ico'  : 'image/x-icon',
    'mp3'  :	'audio/mpeg3',
    'mp4'  : 'video/mp4'
@@ -14,7 +15,7 @@ const mime = {
 console.log("Arrancando servidor...");
 
 http.createServer(function (req, res) {
-    var objetourl = url.parse(req.url, true);
+    var objetourl = url.parse(req.url, true); // El modulo url te permite sacar los campos de la url
     console.log(objetourl.pathname);
     var filename = "." + objetourl.pathname;
     fs.readFile(filename, function(err, data) {
