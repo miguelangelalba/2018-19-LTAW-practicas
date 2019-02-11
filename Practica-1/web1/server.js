@@ -9,7 +9,8 @@ const mime = { // Estandar para indicar el tipo de contenido
    'png'  : 'image/png',
    'ico'  : 'image/x-icon',
    'mp3'  :	'audio/mpeg3',
-   'mp4'  : 'video/mp4'
+   'mp4'  : 'video/mp4',
+   '.js'  : 'application/javascript'
 };
 
 console.log("Arrancando servidor...");

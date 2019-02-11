@@ -3,7 +3,6 @@ body {
     background-image: url(texturagrs.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
-
 }
 
 .contenedor{
@@ -14,6 +13,9 @@ body {
     line-height: 40px;
     overflow: hidden;
 
+}
+img{
+    cursor: pointer;
 }
 #ulcontenedor{
     list-style: none;
