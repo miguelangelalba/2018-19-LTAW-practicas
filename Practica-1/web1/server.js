@@ -21,14 +21,14 @@ http.createServer(function (req, res) {
     fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
+      res.end("404 Not Found");
     }
     const vec = filename.split('.');
     const extension=vec[vec.length-1];
     const mimearchivo = mime[extension];
     res.writeHead(200, {'Content-Type': 'mimearchivo'});
     res.write(data);
-    return res.end();
+    res.end();
     console.log("Peticion atendida")
 
   });
