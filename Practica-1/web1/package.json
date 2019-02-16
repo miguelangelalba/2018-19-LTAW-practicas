@@ -13,9 +13,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/miguelangelalba/2018-19-LTAW-practicas"
-},
-"scripts": {
-   "start": "node server.js",
-   "test": "node -v"
- }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node -v"
+  }
 }
