@@ -1,0 +1,3 @@
+Direcciones interesantes:
+https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Forms
+https://djangotutorial.readthedocs.io/es/1.8/intro/tutorial06.html
