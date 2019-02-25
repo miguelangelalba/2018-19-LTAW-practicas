@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.template import Template, Context
+from django.template.loader import get_template
+from django.shortcuts import render
 
 def mi_funcion(request):
     html = "Hola esto es una prueba"
@@ -33,3 +35,7 @@ def saludo(request):
 
     html = t.render(c)
     return HttpResponse(html)
+
+def index (request):
+
+    return render(request,'index.html',{'user':'Miguel Angel'})
