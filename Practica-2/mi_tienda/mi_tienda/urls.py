@@ -18,9 +18,12 @@ from mi_tienda.views import mi_funcion
 from mi_tienda.views import mi_producto
 from mi_tienda.views import saludo
 from mi_tienda.views import index
+from mi_tienda.views import list
+
 
 urlpatterns = [
     url(r'^main/',index),
+    url(r'^list/',list),
     url(r'^saludo/',saludo),
     url(r'^producto/(\d{1,2})/$',mi_producto),
     url(r'^hola/', mi_funcion),
