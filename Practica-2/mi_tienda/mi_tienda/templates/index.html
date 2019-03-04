@@ -1,8 +1,9 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="pruebastyle.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'pruebastyle.css'%}">
         <title>Bienvenido a la tienda de xiaomi</title>
     </head>
     <body>
@@ -46,18 +47,18 @@
             <tr><th>Teléfonos</th>
             </tr>
             <td>
-                <img id="Xiaomi_A1" src="telefonos/Xiaomi_A1" alt="Xiaomi_A1" onclick="window.open('https://www.mi.com/es/mi-a1/', '_blank'); "></img>
-                <img id="Xiaomi_A2" src="telefonos/Xiaomi_A2" alt="Xiaomi_A2"  onclick="window.open('https://www.mi.com/es/mi-a2/', '_blank'); "></img>
+                <img id="Xiaomi_A1" src="/static/mi_tienda/images/telefonos/Xiaomi_A1" alt="Xiaomi_A1" onclick="window.open('https://www.mi.com/es/mi-a1/', '_blank'); "></img>
+                <img id="Xiaomi_A2" src="/static/mi_tienda/images/telefonos/Xiaomi_A2" alt="Xiaomi_A2"  onclick="window.open('https://www.mi.com/es/mi-a2/', '_blank'); "></img>
 
             </td>
         </table>
         </div>
         <div class="Tabla">
-    <!--    <table>
+        <table>
             <tr><th>Baterías Externas</th></tr>
             <td>
-                <img id="Bateria_pequeña" src="Baterias/bateria_pequena" alt="Bateria_1" onclick="window.open('https://www.mi.com/es/pb5000/', '_blank'); "></img>
-                <img id="Bateria_grande" src="Baterias/mucha_capacidad" alt="Bateria_2" onclick="window.open('https://www.mi.com/es/battery2c/', '_blank'); "></img>
+                <img id="Bateria_pequeña" src="/static/mi_tienda/images/Baterias/bateria_pequena" alt="Bateria_1" onclick="window.open('https://www.mi.com/es/pb5000/', '_blank'); "></img>
+                <img id="Bateria_grande" src="/static/mi_tienda/images/Baterias/mucha_capacidad" alt="Bateria_2" onclick="window.open('https://www.mi.com/es/battery2c/', '_blank'); "></img>
             </td>
         </table>
         </div>
@@ -67,8 +68,8 @@
                 <th>Audio</th>
             </tr>
             <td>
-                <img id="Altavoz2" src="altavoz2" alt="Altavoz_2" onclick="window.open('https://www.mi.com/es/mi-bluetooth-speaker-basic2/', '_blank'); "></img>
-                <img id="Altavoz" src="Altavoz" alt="Altavoz_1" onclick="window.open('https://www.mi.com/es/mi-bluetooth-speaker/', '_blank'); "></img>
+                <img id="Altavoz2" src="/static/mi_tienda/images/Audio/altavoz2" alt="Altavoz_2" onclick="window.open('https://www.mi.com/es/mi-bluetooth-speaker-basic2/', '_blank'); "></img>
+                <img id="Altavoz" src="/static/mi_tienda/images/Audio/Altavoz" alt="Altavoz_1" onclick="window.open('https://www.mi.com/es/mi-bluetooth-speaker/', '_blank'); "></img>
 
 
             </td>
@@ -80,8 +81,8 @@
                 <th>Dispositivos Inteligentes</th>
             </tr>
             <td>
-                <img id="Camara" src="Dispositivos_inteligentes/camara" alt="camara" onclick="window.open('https://www.mi.com/es/camera-360/', '_blank'); "></img>
-                <img id="Patinete" src="Dispositivos_inteligentes/Patinete" alt="camara" onclick="window.open('https://www.mi.com/es/mi-electric-scooter/', '_blank'); "></img>
+                <img id="Camara" src="/static/mi_tienda/images/Dispositivos_inteligentes/camara" alt="camara" onclick="window.open('https://www.mi.com/es/camera-360/', '_blank'); "></img>
+                <img id="Patinete" src="/static/mi_tienda/images/Dispositivos_inteligentes/Patinete" alt="camara" onclick="window.open('https://www.mi.com/es/mi-electric-scooter/', '_blank'); "></img>
 
             </td>
         </table>
@@ -92,16 +93,16 @@
                 <th>Relojes</th>
             </tr>
             <td>
-                <img id="Reloj1" src="relojes/pace.png" alt="camara" onclick="window.open('https://www.mi.com/es/amazfit-pace/', '_blank'); "></img>
+                <img id="Reloj1" src="/static/mi_tienda/images/relojes/pace.png" alt="camara" onclick="window.open('https://www.mi.com/es/amazfit-pace/', '_blank'); "></img>
 
             </td>
         <tr>
             <td>
-                <video id = "video" src = "video/video_mia1.mp4" preload="auto" controls></video>
+                <video id = "video" src = "/static/mi_tienda/images/video/video_mia1.mp4" preload="auto" controls></video>
             </td>
         </tr>
         </table>
-    </div>-->
+    </div>
 
     </body>
 </html>
