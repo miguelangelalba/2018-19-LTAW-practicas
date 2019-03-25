@@ -33,10 +33,17 @@ io.on('connection', function(socket){
 socket.on('new_message', msg => {
 
   //-- Notificarlo en la consola del servidor
-  console.log("Mensaje recibido: " + msg)
+  if (msg == '/help'){
+    respuesta = 'cada minuto de mi vida es un infierno'
+    socket.emit('new_message',respuesta); // emit an event to the socket
+    console.log('ha llegado help!!!!');
 
-  //-- Emitir un mensaje a todos los clientes conectados
-  io.emit('new_message', msg);
+    }else{
+
+    console.log("Mensaje recibido: " + msg)
+    //-- Emitir un mensaje a todos los clientes conectados
+    io.emit('new_message', msg);
+    }
 });
 
 });
