@@ -14,6 +14,8 @@ function main() {
 
   //-- Caja con el mensaje a enviar
   var msg = document.getElementById("msg")
+  var msgs = ""
+  
 
   //-- Cuando se aprieta el botón de enviar...
   send.onclick = () => {
@@ -27,6 +29,7 @@ function main() {
   //-- Cuando se reciba un mensaje del servidor se muestra
    //-- en el párrafo
    socket.on('new_message', msg => {
-     display.innerHTML = msg;
+       msgs = msgs + "</br>" +msg
+     display.innerHTML = msgs;
    });
 }
