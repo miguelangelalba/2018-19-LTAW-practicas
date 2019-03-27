@@ -5,6 +5,7 @@ var io = require('socket.io')(http);
 var num_usuarios = 0;
 //-- Puerto donde lanzar el servidor
 const PORT = 3000
+const respuestaServidor = "<p style =color:blue > Mensaje del servidor: ";
 
 //-- Punto de entrada pricipal
 app.get('/', function(req, res) {
@@ -28,6 +29,9 @@ io.on('connection', function(socket){
   num_usuarios = num_usuarios +1;
   respuesta = '<p style ="color:blue">Mensaje del servidor: Bienvenido al chat</p>'
   socket.emit('new_message',respuesta); // emit an event to the socket
+  respuesta = respuestaServidor + "Nuevo Usuario conectado </P>"
+  io.emit('new_message', respuesta);
+
 
   //-- Detectar si el usuario se ha desconectado
   socket.on('disconnect', function(){
@@ -51,14 +55,18 @@ socket.on('new_message', msg => {
 
 }else if(msg == '/date'){
     var d = new Date();
-    respuesta = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear();
+    respuesta = respuestaServidor + d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() +"</p>";
     socket.emit('new_message',respuesta); // emit an event to the socket
     console.log('ha llegado help!!!!');
 
 }else if(msg == '/list'){
-    respuesta = "<p style =color:blue > Mensaje del servidor: " + "num_usuarios: " + num_usuarios + "</p>";
+    respuesta = respuestaServidor + "num_usuarios: " + num_usuarios + "</p>";
     socket.emit('new_message',respuesta); // emit an event to the socket
     console.log('Ha solicitado lista');
+
+}else if(msg == '/hello') {
+    respuesta = respuestaServidor + "Hello" + "</p>";
+    console.log('Saludos');
 
 }else {
 
@@ -67,5 +75,4 @@ socket.on('new_message', msg => {
     io.emit('new_message', msg);
     }
 });
-
 });
