@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from xiaomi.models import Product
+from .models import Product
 #El punto es para
-from .forms import hacer_pedido
+from xiaomi.forms import formularioPedido
 
 # Create your views here.
 
@@ -13,7 +13,25 @@ def index (request):
 
     return render(request,'index.html',{'user':'Miguel Ángel'})
 def pedido(request):
-    return render(request,'pedido.html',{"form":hacer_pedido})
+    #Esta función va aencargarse tanto de mostar el formulario como de
+    #guardar los datos. Por ello tendremos un if que comprobará el tipo de petición,
+    #Post o get(El tema es qeu al enviar el formulario vuelve a eta vista)
+    print ("entrto rn la función pedido")
+    if request.method == 'POST':
+        form = formularioPedido(request.POST)
+        print("Entro en metodo post")
+        if form.is_valid():
+            #si el formulario es valiado se haceptará el pedido y se guardará en
+            #la DDBB
+
+            form.save()
+            print("Guardo el formulario")
+            return redirect('main')
+            print ("formulario guardado")
+    else:
+        form = formularioPedido()
+    return render(request,'pedido.html',{"form":form})
+
 
 def list(request):
     productos = Product.objects.all()
