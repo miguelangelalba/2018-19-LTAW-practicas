@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'pruebastyle.css'%}">
+        <title>Pedido</title>
+    </head>
+    <body>
+        <p>Haga su pedido</P>
+        <form method="POST">
+            <!--Tengo que añadir crf_token para que el formualario sea seguro
+            y no de errores este tipo de seguridadlo da django -->
+            {% csrf_token %}
+            <!--.as_p  muestra todo el contenido de forms en párrafos-->
+            {{form.as_p}}
+            <input type="submit" value="Hacer pedido"></input>
+        </form>
+
+    </body>
+</html>
