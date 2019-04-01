@@ -12,6 +12,16 @@ from xiaomi.forms import formularioPedido
 def index (request):
 
     return render(request,'index.html',{'user':'Miguel Ángel'})
+
+def buscador (request):
+    print ("entrto rn la función buscar")
+
+    if request.method == 'POST':
+        print("Entro en metodo post")
+        valor = request.POST['producto']
+        print ("Imprimo " + valor)# Ya funciona, quedaría hacer la parte de comparar con la DDBB
+    return render(request,'buscador.html')
+
 def pedido(request):
     #Esta función va aencargarse tanto de mostar el formulario como de
     #guardar los datos. Por ello tendremos un if que comprobará el tipo de petición,

@@ -3,7 +3,7 @@ from .models import datosCliente
 
 class formularioPedido(forms.ModelForm):
     #El widget forma el cuadrado de texto para poder escribir
-    #required indica que el campo será neceario rellenarlo
+    #required indica que el campo sera neceario rellenarlo
     class Meta:
         model = datosCliente
         fields = ['nombre','direccion_envio','email','mensaje']
