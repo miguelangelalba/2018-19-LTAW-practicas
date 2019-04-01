@@ -12,6 +12,13 @@ from xiaomi.forms import formularioPedido
 def index (request):
 
     return render(request,'index.html',{'user':'Miguel Ángel'})
+def a1(request):
+    return render(request,'Xiami_A1.html')
+def a2 (request):
+    return render(request,'Xiaomi_A2.html')
+def patinete (request):
+    return render(request,'patinete.html')
+
 
 def buscador (request):
     print ("entrto rn la función buscar")
@@ -20,6 +27,15 @@ def buscador (request):
         print("Entro en metodo post")
         valor = request.POST['producto']
         print ("Imprimo " + valor)# Ya funciona, quedaría hacer la parte de comparar con la DDBB
+        productos = Product.objects.all()
+        for producto in productos:
+            if producto.name == valor:
+                web = valor + ".html"
+                return redirect(valor)
+
+                #return render(request,web)
+        return render(request,'buscador.html',{"alerta":"No se ha encontrado el producto que busca"})
+
     return render(request,'buscador.html')
 
 def pedido(request):
