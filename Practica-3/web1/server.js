@@ -30,26 +30,27 @@ http.createServer(function (req, res) {
     //      res.end("404 Not Found");
     //        }
     console.log(filename);
+    console.log(cookie);
 
-        if (!cookie & (req.url =="/index.html" )) {
-           console.log("No te conozco mandame una galleta");
-            res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/login_index.html' });
-            res.end();
-            
-            });
-        }
+    if (!cookie & (req.url =="/index.html" )) {
+       console.log("No te conozco mandame una galleta");
+       res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/login_index.html' });
+        res.end();
+
+    }else{
         fs.readFile(filename, function(err, data) {
             if (err) {
-              res.writeHead(404, {'Content-Type': 'text/html'});
-              res.end("404 Not Found");
+                res.writeHead(404, {'Content-Type': 'text/html'});
+                res.end("404 Not Found");
+            }else{
+                const vec = filename.split('.');
+                const extension=vec[vec.length-1];
+                const mimearchivo = mime[extension];
+                res.writeHead(200, {'Content-Type': 'mimearchivo'});
+                res.write(data);
+                res.end();
+                console.log("Peticion atendida");
             }
-            const vec = filename.split('.');
-            const extension=vec[vec.length-1];
-            const mimearchivo = mime[extension];
-            res.writeHead(200, {'Content-Type': 'mimearchivo'});
-            res.write(data);
-            res.end();
-            console.log("Peticion atendida");
-            });
-
+        });
+    }
 }).listen(PORT);
