@@ -21,50 +21,35 @@ http.createServer(function (req, res) {
     var objetourl = url.parse(req.url, true); // El modulo url te permite sacar los campos de la url
     console.log(objetourl.pathname);
     var cookie = req.headers.cookie;
-    //console.log("Cookie: " + cookie)
     var filename = "." + objetourl.pathname;
 
+    //console.log("Cookie: " + cookie)
+    //    fs.readFile(filename, function(err, data) {
+    //    if (err) {
+    //      res.writeHead(404, {'Content-Type': 'text/html'});
+    //      res.end("404 Not Found");
+    //        }
+    console.log(filename);
+
+        if (!cookie & (req.url =="/index.html" )) {
+           console.log("No te conozco mandame una galleta");
+            res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/login_index.html' });
+            res.end();
+            
+            });
+        }
         fs.readFile(filename, function(err, data) {
-        if (err) {
-          res.writeHead(404, {'Content-Type': 'text/html'});
-          res.end("404 Not Found");
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              res.end("404 Not Found");
             }
-
-        if (!cookie) {
-            console.log("No te conozco mandame una galleta");
-            var filename = "." + "login_index.html";
-            fs.readFile(filename, function(err, data) {
-                if (err) {
-                  res.writeHead(404, {'Content-Type': 'text/html'});
-                  res.end("404 Not Found");
-                    }
-                var vec = filename.split('.');
-                var extension=vec[vec.length-1];
-                var mimearchivo = mime[extension];
-                res.writeHead(200, {'Content-Type': 'mimearchivo'});
-                res.write(data);
-                res.end();
-                console.log("Peticion atendida");
+            const vec = filename.split('.');
+            const extension=vec[vec.length-1];
+            const mimearchivo = mime[extension];
+            res.writeHead(200, {'Content-Type': 'mimearchivo'});
+            res.write(data);
+            res.end();
+            console.log("Peticion atendida");
             });
-            }
-        else{
-            var filename = "." + objetourl.pathname;
-            fs.readFile(filename, function(err, data) {
-                if (err) {
-                  res.writeHead(404, {'Content-Type': 'text/html'});
-                  res.end("404 Not Found");
-                    }
-                var vec = filename.split('.');
-                var extension=vec[vec.length-1];
-                var mimearchivo = mime[extension];
-                res.writeHead(200, {'Content-Type': 'mimearchivo'});
-                res.write(data);
-                res.end();
-                console.log("Peticion atendida");
-            });
-
-        };
-
-
 
 }).listen(PORT);
