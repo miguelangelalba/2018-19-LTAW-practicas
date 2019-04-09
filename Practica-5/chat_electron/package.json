@@ -1,0 +1,8 @@
+{
+  "name": "mi-electron-app",
+  "version": "0.1.0",
+  "main": "chatmain.js",
+  "scripts": {
+    "start": "electron ."
+  }
+}
