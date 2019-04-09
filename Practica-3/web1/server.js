@@ -79,6 +79,7 @@ http.createServer(function (req, res) {
 
    }else if(req.url == "/?Nombre=" + user ) {
        console.log("Hola:" + user );
+       console.log("Te mando tu cookie, con ella podrás hacer compras");
        res.setHeader('Set-Cookie', 'user='+user);
        res.writeHead(301,{"Location": "http://" + ip +":"+ PORT + '/index.html' });
        //res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/index.html' });
