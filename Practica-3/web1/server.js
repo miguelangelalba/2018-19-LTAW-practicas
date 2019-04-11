@@ -72,18 +72,27 @@ http.createServer(function (req, res) {
     console.log("Direccion ip: " + req.headers['host']);
 
     if (!cookie & (req.url =="/index.html" )) {
-       console.log("No te conozco mandame una galleta");
+       console.log("No te conozco, mandame una galleta");
        res.writeHead(301,{"Location": "http://" + ip +":"+PORT + '/login_index.html' });
        //res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/login_index.html' });
        res.end();
 
    }else if(req.url == "/?Nombre=" + user ) {
        console.log("Hola:" + user );
-       console.log("Te mando tu cookie, con ella podrás hacer compras");
+       console.log("Te mando tu galleta, con ella podrás hacer compras");
        res.setHeader('Set-Cookie', 'user='+user);
        res.writeHead(301,{"Location": "http://" + ip +":"+ PORT + '/index.html' });
        //res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/index.html' });
        res.end();
+   }else if(req.url == "/myquery"){
+       console.log("Estas buscando cosas");
+       ddbb =`{
+           "productos":["Xiaomi_A1","Xiaomi_A2","Patinete"]
+       }`
+       res.setHeader('Content-Type', 'application/json')
+       res.write(ddbb);
+       res.end();
+       return
    }else{
        console.log("Entro en el else");
        console.log("Esta es la cookie:" + cookie);;
