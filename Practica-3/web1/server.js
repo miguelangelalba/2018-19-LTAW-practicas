@@ -15,13 +15,15 @@ const mime = { // Estandar para indicar el tipo de contenido
    '.json': 'application/json'
 };
 const DataBases = {
-    "items":["Xiaomi_A1","Xiaomi_A2","Patinete"]
+    "items":["xiaomi_A1","xiaomi_A2","patinete"]
 }
 function findItem(letters){
     var foundIt =  [];
-    for (i=0; i< DataBases[0].length; i++){
-        if (DataBases[0][i].includes(leters)){
-            foundIt.push(DataBases[0][i]);
+    console.log("Imprime letras a buscar: "+letters);
+    console.log("Esti es lo que contiene la DDBB:" + DataBases.items);
+    for (i=0; i< DataBases.items.length; i++){
+        if (DataBases.items[i].includes(letters)){
+            foundIt.push(DataBases.items[i]);
         }
     }
     return foundIt;
@@ -67,8 +69,6 @@ function getIp(){
      return ip;
    }
 
-
-
 console.log("Arrancando servidor..." + PORT);
 ip = getIp()
 console.log("Ip:" + ip);
@@ -108,6 +108,8 @@ http.createServer(function (req, res) {
        console.log("Esto es lo que contiene search:" + search);
        console.log("Letras que buscas:" + letters);
        console.log("Estas buscando cosas");
+       productosEncontrados = findItem(letters);
+       console.log("Productos encnotrados:" + productosEncontrados);
        ddbb =`{
            "productos":["Xiaomi_A1","Xiaomi_A2","Patinete"]
        }`
