@@ -11,8 +11,21 @@ const mime = { // Estandar para indicar el tipo de contenido
    'ico'  : 'image/x-icon',
    'mp3'  :	'audio/mpeg3',
    'mp4'  : 'video/mp4',
-   '.js'  : 'application/javascript'
+   '.js'  : 'application/javascript',
+   '.json': 'application/json'
 };
+const DataBases = {
+    "items":["Xiaomi_A1","Xiaomi_A2","Patinete"]
+}
+function findItem(leters){
+    var foundIt =  [];
+    for (i=0; i< DataBases[0].length; i++){
+        if (DataBases[0].[i].includes(leters){
+            foundIt.push(DataBases[0].[i]);
+        }
+    }
+    return foundIt;
+}
 function userNamecookie(req){
 
     if(req.url.indexOf("?") > 0 ){
@@ -89,6 +102,7 @@ http.createServer(function (req, res) {
        ddbb =`{
            "productos":["Xiaomi_A1","Xiaomi_A2","Patinete"]
        }`
+       //Hay que indicar que es un objeto JSON
        res.setHeader('Content-Type', 'application/json')
        res.write(ddbb);
        res.end();
