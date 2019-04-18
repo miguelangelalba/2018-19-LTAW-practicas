@@ -17,11 +17,11 @@ const mime = { // Estandar para indicar el tipo de contenido
 const DataBases = {
     "items":["Xiaomi_A1","Xiaomi_A2","Patinete"]
 }
-function findItem(leters){
+function findItem(letters){
     var foundIt =  [];
     for (i=0; i< DataBases[0].length; i++){
-        if (DataBases[0].[i].includes(leters){
-            foundIt.push(DataBases[0].[i]);
+        if (DataBases[0][i].includes(leters)){
+            foundIt.push(DataBases[0][i]);
         }
     }
     return foundIt;
@@ -47,7 +47,9 @@ function userNamecookie(req){
 
 }
 
-function get_ip(){
+function getIp(){
+    //Esta función la creo para saber la dirección ip de la máquina,
+    //ya que al redireccionar a los clientes no encontrarían la web con localhost
     var os = require('os');
     var ifaces = os.networkInterfaces();
     var ip = "";
@@ -68,7 +70,7 @@ function get_ip(){
 
 
 console.log("Arrancando servidor..." + PORT);
-ip = get_ip()
+ip = getIp()
 console.log("Ip:" + ip);
 
 
@@ -97,7 +99,14 @@ http.createServer(function (req, res) {
        res.writeHead(301,{"Location": "http://" + ip +":"+ PORT + '/index.html' });
        //res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/index.html' });
        res.end();
-   }else if(req.url == "/myquery"){
+//De esta manera identificamos la petición AJax ya que debe contener /search en la url
+
+   }else if(req.url.includes("/search")){
+       // Aquí separo con el split las letras qeu quiero buscar
+       search = req.url.split("=");
+       letters = search[1];
+       console.log("Esto es lo que contiene search:" + search);
+       console.log("Letras que buscas:" + letters);
        console.log("Estas buscando cosas");
        ddbb =`{
            "productos":["Xiaomi_A1","Xiaomi_A2","Patinete"]

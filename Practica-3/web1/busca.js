@@ -2,11 +2,13 @@ function main(){
     //Cojemos las variables del DOm que sean necesarias
     var ver = document.getElementById('Buscar');
     var resultado = document.getElementById('resultado');
+    var lettersToSearch = document.getElementById('buscarLetras').value;
     ver.onclick = ()=>{
         //Crear objeto para la pretición Ajax
         m = new XMLHttpRequest();
         //Configuración de la Petición
-        m.open("GET","http://localhost:8080/myquery", true);
+        console.log("Estas son las letras:" + lettersToSearch);
+        m.open("GET","http://localhost:8080/search=" + lettersToSearch, true);
 
         //Qeuda a la espera para ejecutar esta función (es una promesa?)
         m.onreadystatechange=function(){
