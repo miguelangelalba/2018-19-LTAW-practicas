@@ -3,13 +3,19 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="pruebastyle.css">
-        <title>Formulario de compra</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <title>Buscador de productos</title>
         <script src=busca.js></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body onload="main();">
         <h1>Buscador de productos</h1>
-
-        Nombre: <input type="text" id="buscarLetras"/></br>
+        <div class="ui-widget">
+            <label for="buscarLetras" type="text">Nombre:</label>
+            <input id="buscarLetras" onkeypress="return buscar(event)">
+        </div>
         <input type="submit" name="Buscar" id="Buscar"/>
         <p id="resultado"></p>
 

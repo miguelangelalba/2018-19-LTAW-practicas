@@ -111,6 +111,8 @@ http.createServer(function (req, res) {
        productosEncontrados = findItem(letters);
        console.log("Productos encnotrados:" + productosEncontrados);
        console.log(JSON.stringify({productos: productosEncontrados}));
+       //Sobre escribo la variable productosEncontrados para devolverla al clientes
+       //En formato JSON
        productosEncontrados =JSON.stringify({productos: productosEncontrados})
        //Hay que indicar que es un objeto JSON
        res.setHeader('Content-Type', 'application/json')
