@@ -110,12 +110,11 @@ http.createServer(function (req, res) {
        console.log("Estas buscando cosas");
        productosEncontrados = findItem(letters);
        console.log("Productos encnotrados:" + productosEncontrados);
-       ddbb =`{
-           "productos":["Xiaomi_A1","Xiaomi_A2","Patinete"]
-       }`
+       console.log(JSON.stringify({productos: productosEncontrados}));
+       productosEncontrados =JSON.stringify({productos: productosEncontrados})
        //Hay que indicar que es un objeto JSON
        res.setHeader('Content-Type', 'application/json')
-       res.write(ddbb);
+       res.write(productosEncontrados);
        res.end();
        return
    }else{
