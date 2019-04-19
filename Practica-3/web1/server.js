@@ -17,6 +17,41 @@ const mime = { // Estandar para indicar el tipo de contenido
 const DataBases = {
     "items":["xiaomi_A1","xiaomi_A2","patinete"]
 }
+function createForm(user){
+    //Esta función retornará un formulario con el nombre del usuario y los
+    //productos que seleccionó
+    console.log(user);
+    //console.log(intems);
+
+    content =
+    `<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <link rel="stylesheet" type="text/css" href="pruebastyle.css">
+            <title>Formulario de compra</title>
+        </head>
+        <body>
+            <h1>Formulario de compra</h1>
+
+            <form action="/" >
+                Nombre: <input type="text" name="Nombre" value=`+user +`></br>
+                Apellidos: <input type="text" name="Apellidos"/></br>
+                Correo electrónico:  <input type="text" name="Correo"/></br>
+                Metodo de Pago : <select name="Metodo de pago">
+                    <option value="paypal">paypal</option>
+                    <option value="Tarjeta de credito" selected>Tarjeta de credito</option>
+                    <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                </select>
+              <br/>
+              <input type="submit" value="Enviar"/>
+            </form>
+
+
+        </body>
+    </html>`
+    return content;
+}
 function findItem(letters){
     var foundIt =  [];
     console.log("Imprime letras a buscar: "+letters);
@@ -117,6 +152,13 @@ http.createServer(function (req, res) {
        //Hay que indicar que es un objeto JSON
        res.setHeader('Content-Type', 'application/json')
        res.write(productosEncontrados);
+       res.end();
+       return
+   }else if(req.url == "/formularioCompra.html"){
+       console.log("Entro para hacer mis cosas de formulario");
+       res.writeHead(200, {'Content-Type': 'mimearchivo'});
+       //Modificar esta parte del código, tengo quehacer otra función para que lea la cookie
+       res.write(createForm(userNamecookie(req)));
        res.end();
        return
    }else{

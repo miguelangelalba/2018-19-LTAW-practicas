@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="pruebastyle.css">
+        <script src=index.js></script>
+
         <title>Bienvenido a la tienda de xiaomi</title>
     </head>
-    <body>
+    <body onload="main();">
         <h1 id="Titulo">Tienda Xiaomi</h1>
         <div class="contenedor">
             <p>Variedad de Productos:</p>
@@ -64,6 +66,8 @@
                 <img id="Xiaomi_A2" src="/images/telefonos/Xiaomi_A2" alt="Xiaomi_A2"  onclick="window.open('https://www.mi.com/es/mi-a2/', '_blank'); "></img>
 
             </td>
+            <td>
+                <input type="submit" id = "xiaomi_A1" value="Añadir al carrito" onclick="addCarrito(id)"></input>
         </table>
         </div>
         <div class="Tabla">
