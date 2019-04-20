@@ -17,13 +17,42 @@ const mime = { // Estandar para indicar el tipo de contenido
 const DataBases = {
     "items":["xiaomi_A1","xiaomi_A2","patinete"]
 }
-function createForm(user){
+
+function createReqForm(){ content =
+    let content = `<!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <link rel="stylesheet" type="text/css" href="pruebastyle.css">
+                <script src=formularioCompra.js></script>
+                <title>Formulario de compra</title>
+            </head>
+            <body>
+                <h1>Facturación de compra</h1>
+                Gracias por la compra,presione Aceptar para finalizar compra y cerrar sesión.
+                `
+    return content
+
+}
+function createEndForm(){
+    let content = `<input type="submit" id ="aceptar" onclick="cerrarSesion()" value="Aceptar"/>
+     </form>
+     `
+
+}
+function createForm(valoresCookie){
     //Esta función retornará un formulario con el nombre del usuario y los
     //productos que seleccionó
+    let user = valoresCookie[0];
+    let carro = [];
+    for( i = 1 ; i <= valoresCookie.length -1; i++){
+        carro.push(valoresCookie[i]);
+
+    }
     console.log(user);
     //console.log(intems);
 
-    content =
+    let content =
     `<!DOCTYPE html>
     <html>
         <head>
@@ -34,8 +63,8 @@ function createForm(user){
         <body>
             <h1>Formulario de compra</h1>
 
-            <form action="/" >
-                Nombre: <input type="text" name="Nombre" value=`+user +`></br>
+            <form method="POST">
+                Nombre: <input type="text" name="Nombre" value=`+valoresCookie[0] +`></br>
                 Apellidos: <input type="text" name="Apellidos"/></br>
                 Correo electrónico:  <input type="text" name="Correo"/></br>
                 Metodo de Pago : <select name="Metodo de pago">
@@ -45,12 +74,34 @@ function createForm(user){
                 </select>
               <br/>
               <input type="submit" value="Enviar"/>
+              <p>Productos del carro:</p>
+              `+ carro +`
+
             </form>
 
 
         </body>
     </html>`
     return content;
+}
+function reedCookie(cookie){
+    console.log("Leo cookie:");
+    console.log(cookie);
+    var separoDatos = cookie.split(";");
+    let valoresCookie = [];
+    console.log(separoDatos);
+    for (var i =0 ; i <=separoDatos.length -1; i++){
+        var parametro = separoDatos[i];
+        //nombre=miguel
+        var claveValor = parametro.split("=");
+        //[nombre,miguel]
+        valoresCookie.push(claveValor[1]);
+    }
+    console.log("Resultado valores cookie:");
+    console.log(valoresCookie);
+    return valoresCookie;
+
+
 }
 function findItem(letters){
     var foundIt =  [];
@@ -112,7 +163,7 @@ console.log("Ip:" + ip);
 http.createServer(function (req, res) {
     var objetourl = url.parse(req.url, true); // El modulo url te permite sacar los campos de la url
     console.log(objetourl.pathname);
-    var cookie = req.headers.cookie;
+    let cookie = req.headers.cookie;
     var filename = "." + objetourl.pathname;
     user = userNamecookie(req);
     console.log(user);
@@ -155,15 +206,36 @@ http.createServer(function (req, res) {
        res.end();
        return
    }else if(req.url == "/formularioCompra.html"){
-       console.log("Entro para hacer mis cosas de formulario");
-       res.writeHead(200, {'Content-Type': 'mimearchivo'});
-       //Modificar esta parte del código, tengo quehacer otra función para que lea la cookie
-       res.write(createForm(userNamecookie(req)));
-       res.end();
-       return
+       if (req.method === 'POST'){
+            req.on('data', chunk => {
+            //-- Leer los datos (convertir el buffer a cadena)
+            data = chunk.toString();
+            reqForm = createReqForm();
+            reqForm += `<p>`+ data`</p>`
+            createEndForm();
+            //-- Añadir los datos a la respuesta
+
+
+            //-- Mostrar los datos en la consola del servidor
+            console.log("Datos recibidos: " + data)
+            res.statusCode = 200;
+            res.write(data);
+            res.end();
+         });
+
+       }else{
+
+           console.log("Entro para hacer mis cosas de formulario");
+           res.writeHead(200, {'Content-Type': 'mimearchivo'});
+           //Modificar esta parte del código, tengo quehacer otra función para que lea la cookie
+           var valoresCookie = reedCookie(cookie);
+           res.write(createForm(valoresCookie));
+           res.end();
+           return
+       }
    }else{
        console.log("Entro en el else");
-       console.log("Esta es la cookie:" + cookie);;
+       console.log("Esta es la cookie:" + cookie);
         fs.readFile(filename, function(err, data) {
             if (err) {
                 res.writeHead(404, {'Content-Type': 'text/html'});
