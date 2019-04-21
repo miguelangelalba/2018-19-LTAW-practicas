@@ -18,7 +18,8 @@ const DataBases = {
     "items":["xiaomi_A1","xiaomi_A2","patinete"]
 }
 
-function createReqForm(){ content =
+function createReqForm(){
+
     let content = `<!DOCTYPE html>
         <html>
             <head>
@@ -38,7 +39,7 @@ function createEndForm(){
     let content = `<input type="submit" id ="aceptar" onclick="cerrarSesion()" value="Aceptar"/>
      </form>
      `
-
+     return content
 }
 function createForm(valoresCookie){
     //Esta función retornará un formulario con el nombre del usuario y los
@@ -211,15 +212,15 @@ http.createServer(function (req, res) {
             //-- Leer los datos (convertir el buffer a cadena)
             data = chunk.toString();
             reqForm = createReqForm();
-            reqForm += `<p>`+ data`</p>`
-            createEndForm();
+            reqForm += `<p>`+ data +`</p>`
+            reqForm += createEndForm();
             //-- Añadir los datos a la respuesta
 
 
             //-- Mostrar los datos en la consola del servidor
             console.log("Datos recibidos: " + data)
             res.statusCode = 200;
-            res.write(data);
+            res.write(reqForm);
             res.end();
          });
 
