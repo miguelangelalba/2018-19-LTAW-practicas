@@ -2,7 +2,7 @@ var http = require('http');
 var dt = require('./myfirstmodule');
 var url = require('url');
 var fs = require('fs');
-const PORT = 8080;
+var PORT =8080;
 const mime = { // Estandar para indicar el tipo de contenido
    'html' : 'text/html',
    'css'  : 'text/css',
@@ -175,7 +175,8 @@ http.createServer(function (req, res) {
 
     if (!cookie & (req.url =="/index.html" )) {
        console.log("No te conozco, mandame una galleta");
-       res.writeHead(301,{"Location": "http://" + ip +":"+PORT + '/login_index.html' });
+       res.writeHead(301,{"Location": "http://localhost:8080/login_index.html" });
+       //res.writeHead(301,{"Location": "http://" + ip +":"+PORT + '/login_index.html' });
        //res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/login_index.html' });
        res.end();
 
@@ -183,7 +184,8 @@ http.createServer(function (req, res) {
        console.log("Hola:" + user );
        console.log("Te mando tu galleta, con ella podrás hacer compras");
        res.setHeader('Set-Cookie', 'user='+user);
-       res.writeHead(301,{"Location": "http://" + ip +":"+ PORT + '/index.html' });
+       res.writeHead(301,{"Location": "http://localhost:8080/index.html" });
+       //res.writeHead(301,{"Location": "http://" + ip +":"+ PORT + '/index.html' }); // descomentado esta línea y coemntando la anterior podrían entrar otros usuarios de la res
        //res.writeHead(301,{"Location": "http://" + req.headers['host'] + '/index.html' });
        res.end();
 //De esta manera identificamos la petición AJax ya que debe contener /search en la url
