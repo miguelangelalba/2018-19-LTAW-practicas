@@ -67,8 +67,11 @@ def pedido(request):
 
 def list(request):
     productos = Product.objects.all()
-    html = "<p>Listado de articulos</p>"
+    pedidos = datosCliente.objects.all()
+
+    html = "<p>Listado de articulos y clientes</p>"
     request_producto = []
+    request_pedido = []
 
     for producto in productos:
         print(producto.name)
@@ -77,5 +80,9 @@ def list(request):
             print(producto.name)
             request_producto.append(producto)
         print(producto.name)
+    #Futura función para pedir pedidos
+    #for pedido in pedidos:
+        #Debo corregir esta función no se exactamente que le ocurre
+    #    request_pedido.append(pedido)
         #html += '<p>'+ producto.name + ' ' + str(producto.price) + '<p>'
     return render(request,'list.html',{'item_list':request_producto})
