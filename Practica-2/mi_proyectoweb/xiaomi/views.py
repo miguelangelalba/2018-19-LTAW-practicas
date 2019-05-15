@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Product
+from .models import datosCliente
 #El punto es para
 from xiaomi.forms import formularioPedido
 
@@ -47,10 +48,15 @@ def pedido(request):
         form = formularioPedido(request.POST)
         print("Entro en metodo post")
         if form.is_valid():
-            #si el formulario es valiado se haceptará el pedido y se guardará en
+            #si el formulario es valiado se aceptará el pedido y se guardará en
             #la DDBB
-
-            form.save()
+            #Product.objects.all().filter(name__contains=data['item'])[0].price
+            data = form.cleaned_data
+            print(data)
+            pedido = datosCliente(nombre=data['nombre'],direccion_envio=data['direccion_envio'],email=data['email'],mensaje=data['mensaje'])
+            pedido.save()
+            #form.save()
+            #print (form)
             print("Guardo el formulario")
             return redirect('main')
             print ("formulario guardado")
@@ -61,8 +67,11 @@ def pedido(request):
 
 def list(request):
     productos = Product.objects.all()
-    html = "<p>Listado de articulos</p>"
+    pedidos = datosCliente.objects.all()
+
+    html = "<p>Listado de articulos y clientes</p>"
     request_producto = []
+    request_pedido = []
 
     for producto in productos:
         print(producto.name)
@@ -71,5 +80,9 @@ def list(request):
             print(producto.name)
             request_producto.append(producto)
         print(producto.name)
+    #Futura función para pedir pedidos
+    #for pedido in pedidos:
+        #Debo corregir esta función no se exactamente que le ocurre
+    #    request_pedido.append(pedido)
         #html += '<p>'+ producto.name + ' ' + str(producto.price) + '<p>'
     return render(request,'list.html',{'item_list':request_producto})
