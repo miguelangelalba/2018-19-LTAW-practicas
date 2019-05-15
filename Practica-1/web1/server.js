@@ -23,14 +23,16 @@ http.createServer(function (req, res) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
       res.end("404 Not Found");
+    }else {
+      const vec = filename.split('.');
+      const extension=vec[vec.length-1];
+      const mimearchivo = mime[extension];
+      res.writeHead(200, {'Content-Type': 'mimearchivo'});
+      res.write(data);
+      res.end();
+      console.log("Peticion atendida")
     }
-    const vec = filename.split('.');
-    const extension=vec[vec.length-1];
-    const mimearchivo = mime[extension];
-    res.writeHead(200, {'Content-Type': 'mimearchivo'});
-    res.write(data);
-    res.end();
-    console.log("Peticion atendida")
+
 
   });
 }).listen(8080);
