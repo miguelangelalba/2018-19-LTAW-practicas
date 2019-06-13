@@ -1,0 +1,8 @@
+
+- para acceder al main -->localhost:8000/main (la espada aparece debajo de los móviles ocmo si fuese una batería)
+
+- Para acceder al buscador--> localhost:8000/buscador
+    - En el buscador introducir (las palabras que tengan letras mayúsculas con mayúsculas) :espadadeacerovalyrio,Patinete,Xiami_A1 o Xiaomi_A2
+
+- para ver los productos de la base de datos --> localhost:8000/list
+   

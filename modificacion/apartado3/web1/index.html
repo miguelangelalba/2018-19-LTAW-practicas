@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="pruebastyle.css">
+        <script src=index.js></script>
+
+        <title>Bienvenido a la tienda de xiaomi</title>
+    </head>
+    <body onload="main();">
+        <h1 id="Titulo">Tienda Xiaomi</h1>
+        <div class="contenedor">
+            <p>Variedad de Productos:</p>
+            <ul id="ulcontenedor">
+                <li>Teléfonos<li>
+                <li>Baterías externas</li>
+                <li>Audio</li>
+                <li>Dispositivos Inteligentes</li>
+                <li>Accesorios</li>
+                <li>Relojes</li>
+            </ul>
+        </div>
+
+        <div class="Tabla">
+        <table >
+            <tr>
+                <th> Visita nuestra tienda en Madrid </th>
+            </tr>
+        </table>
+        </div>
+        <div class="Tabla">
+        <table>
+            <tr>
+                <td>Dirección:</td>
+                <td>Xanadú (Móstoles)</td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td>xiaomi@gmail.com</td>
+            </tr>
+
+        </table>
+        </div>
+        <div class="Tabla">
+        <table>
+            <tr>
+                <td>
+                    <input type="submit" name="Buscar" id="Buscar" onclick="window.location.href='/buscador.html'" value = "Busar producto"></input>
+
+                </td>
+                <td>
+                    <input type="submit" name="carrito" id="carrito" onclick="window.location.href='/formularioCompra.html'" value = "Carrito"></input>
+
+                </td>
+
+        </table>
+        </div>
+
+        </table>
+        <div class="Tabla">
+        <table>
+            <tr><th>Teléfonos</th>
+            </tr>
+            <td>
+                <img id="Xiaomi_A1" src="/images/telefonos/Xiaomi_A1" alt="Xiaomi_A1" onclick="window.open('https://www.mi.com/es/mi-a1/', '_blank'); "></img>
+                <input type="submit" id = "xiaomi_A1" value="Añadir al carrito" onclick="addCarrito(id)"></input>
+
+                <img id="Xiaomi_A2" src="/images/telefonos/Xiaomi_A2" alt="Xiaomi_A2"  onclick="window.open('https://www.mi.com/es/mi-a2/', '_blank'); "></img>
+                <input type="submit" id = "xiaomi_A2" value="Añadir al carrito" onclick="addCarrito(id)"></input>
+
+            </td>
+            <td>
+        </table>
+        </div>
+        <div class="Tabla">
+        <table>
+            <tr>
+                <th>Dispositivos Inteligentes</th>
+            </tr>
+            <td>
+                <img id="Patinete" src="/images/Dispositivos_inteligentes/Patinete" alt="camara" onclick="window.open('https://www.mi.com/es/mi-electric-scooter/', '_blank'); "></img>
+                <input type="submit" id = "patinete" value="Añadir al carrito" onclick="addCarrito(id)"></input>
+
+            </td>
+        </table>
+    </div>
+    <div class="Tabla">
+        <table>
+
+        <tr>
+            <td>
+                <video id = "video" src = "video/video_mia1.mp4" preload="auto" controls></video>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+    </body>
+</html>

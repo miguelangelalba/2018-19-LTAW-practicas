@@ -1,0 +1,16 @@
+{
+    "Casa":[{
+    "nombre":"Stark",
+    "Animal":"Lobo",
+    "Personajes":["Arya","Sansa"]},
+    {
+    "nombre":"Targaryen",
+    "Animal":"Dragón",
+    "Personajes":["Daenerys","Viserys"]},
+    {
+    "nombre":"Lannister",
+    "Animal":"León",
+    "Personajes":["Cersei","Tyrion","Jaime"]},
+
+    ]
+}

@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'pruebastyle.css'%}">
+        <script src="{% static 'mi-js.js' %}"></script>
+        <title>Bienvenido a la tienda de xiaomi</title>
+    </head>
+    <body onload="main();">
+        <button type="button" id="boton">Click me</button>
+        <p>Bienvenido {{user}}</p>
+        <h1 id="Titulo">Tienda Xiaomi</h1>
+        <div class="contenedor">
+            <p>Variedad de Productos:</p>
+            <ul id="ulcontenedor">
+                <li>Teléfonos<li>
+                <li>Baterías externas</li>
+                <li>Audio</li>
+                <li>Dispositivos Inteligentes</li>
+                <li>Accesorios</li>
+                <li>Relojes</li>
+            </ul>
+        </div>
+
+        <div class="Tabla">
+        <table >
+            <tr>
+                <th> Visita nuestra tienda en Madrid </th>
+            </tr>
+        </table>
+        </div>
+        <div class="Tabla">
+        <table>
+            <tr>
+                <th>Dispositivos Inteligentes/Patinete</th>
+            </tr>
+            <td>
+                <img id="Patinete" src="/static/images/Dispositivos_inteligentes/Patinete" alt="camara" onclick="window.open('https://www.mi.com/es/mi-electric-scooter/', '_blank'); "></img>
+
+            </td>
+        </table>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+ejecutar node server.js
+ - Borrar todas las cookies del navegador.
+  -ir a http://localhost:8080/index.html
+    -Presionar botones Añadir al carrito para añadir el artículo.
+    -Presionar Carrito para ir al formulario de compra
+    -En el formulario de compra el código del cupón es 55555
+    - si el código es correcto se aplicará el descueto y parecerá el precio final
+    - si no es valido aparecerá el precio normal
